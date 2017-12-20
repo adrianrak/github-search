@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #323330;
+}
+.root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h1 {
+    color: #F5DA55;
+}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    color: #F5DA55;
+}
+.form label {
+    padding: 15px;
+}
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #F5DA55;
+    padding: 15px;
+}
+.user img {
+    padding: 15px;
+}
+.user a {
+    text-decoration: none;
+    color: #323330;
+    cursor: pointer;
+}
+.users {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #F5DA55;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
