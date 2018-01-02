@@ -18,7 +18,8 @@ var App = function (_React$Component) {
 
     _this.state = {
       searchText: '',
-      users: []
+      users: [],
+      notFound: ''
     };
     return _this;
   }
@@ -39,8 +40,14 @@ var App = function (_React$Component) {
       var url = 'https://api.github.com/search/users?q=' + searchText;
       fetch(url).then(function (response) {
         return response.json();
-      }).then(function (responseJson) {
-        return _this2.setState({ users: responseJson.items });
+      })
+      //.then(responseJson => this.setState({users: responseJson.items}))
+      .then(function (responseJson) {
+        if (responseJson.items.length > 0) {
+          _this2.setState({ users: responseJson.items, notFound: '' });
+        } else {
+          _this2.setState({ users: [], notFound: "Not found! Enter a different name." });
+        }
       });
     }
   }, {
@@ -74,6 +81,11 @@ var App = function (_React$Component) {
             },
             value: this.state.searchText })
         ),
+        this.state.notFound ? React.createElement(
+          'p',
+          { className: 'notFound' },
+          this.state.notFound
+        ) : null,
         React.createElement(UsersList, { users: this.state.users })
       );
     }

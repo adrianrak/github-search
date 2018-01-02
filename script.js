@@ -3,7 +3,8 @@ class App extends React.Component {
       super();
       this.state = {
         searchText: '',
-        users: []
+        users: [],
+        notFound: ''
       };
     }
   
@@ -17,8 +18,15 @@ class App extends React.Component {
       const url = `https://api.github.com/search/users?q=${searchText}`;
       fetch(url)
         .then(response => response.json())
-        .then(responseJson => this.setState({users: responseJson.items}));
-    }
+        //.then(responseJson => this.setState({users: responseJson.items}))
+        .then(responseJson => {
+          if (responseJson.items.length > 0) {
+            this.setState({users: responseJson.items, notFound: ''})
+          } else {
+            this.setState({users: [], notFound: "Not found! Enter a different name."})
+          }
+        });
+    } 
   
     render() {
       return (
@@ -32,9 +40,12 @@ class App extends React.Component {
               onChange={event => this.onChangeHandle(event)}
               value={this.state.searchText}/>
           </form>
+          {
+            this.state.notFound ? <p className={'notFound'}>{this.state.notFound}</p> : null
+          }
           <UsersList users={this.state.users}/>
-        </div>
-      );
+        </div> 
+      ); 
     }
 }
 

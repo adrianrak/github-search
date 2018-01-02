@@ -57,3 +57,8 @@ h1 {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+.notFound {
+    color: #F5DA55;
+    font-weight: bolder;
+    font-size: x-large;
+}
